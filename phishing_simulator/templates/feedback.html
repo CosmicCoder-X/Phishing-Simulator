@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Feedback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef1f5;
+      color: #333;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .feedback {
+      background-color: #fef9e7;
+      border-left: 5px solid #f1c40f;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    .email-details {
+      margin-top: 30px;
+      background: #fafafa;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .email-header b {
+      display: inline-block;
+      width: 80px;
+    }
+
+    .retry-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .retry-link a {
+      text-decoration: none;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .retry-link a:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Feedback</h2>
+    <div class="feedback">
+      <p>{{ feedback }}</p>
+    </div>
+    <div class="email-details">
+      <div class="email-header"><b>From:</b> {{ email.from }}</div>
+      <div class="email-header"><b>Subject:</b> {{ email.subject }}</div>
+      <div class="email-body">{{ email.body | safe }}</div>
+    </div>
+    <div class="retry-link">
+      <a href="{{ url_for('home') }}">Try Another Email</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a73e8;
+    }
+
+    .email-block {
+      margin-top: 20px;
+      background: #fafafa;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .email-header {
+      margin-bottom: 15px;
+    }
+
+    .email-header b {
+      display: inline-block;
+      width: 80px;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 10px 25px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .phishing-btn {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .safe-btn {
+      background-color: #2ecc71;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Simulated Email</h2>
+    <div class="email-block">
+      <div class="email-header"><b>From:</b> {{ email.from }}</div>
+      <div class="email-header"><b>Subject:</b> {{ email.subject }}</div>
+      <div class="email-body">{{ email.body | safe }}</div>
+    </div>
+    <div class="actions">
+      <form action="{{ url_for('answer') }}" method="post">
+        <button class="phishing-btn" name="answer" value="phishing" type="submit">Phishing</button>
+        <button class="safe-btn" name="answer" value="safe" type="submit">Safe</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
